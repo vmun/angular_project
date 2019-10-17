@@ -16,8 +16,47 @@
         laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
         ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       <hr>
-      <h3>Test</h3>
-      <p>Lorem ipsum...</p>
+      <hr>
+      <hr>
+
+      <div>
+        <button (click)="drawPolygon()">Draw polygon</button>
+        <button (click)="undoPolygon()">Undo</button>
+        <button (click)="zoomin()">Zoom +</button>
+        <button (click)="zoomout()">Zoom -</button>
+
+        <button (click)="mcontrast()">- contrast</button>
+        <button (click)="pcontrast()">+ contrast</button>
+      </div>
+      <div class="wrapperBlock">
+        <div class="canvas-block">
+          <canvas id="canvasImage" [ngClass]="{'drawing': drawing}" width="500" height="500"></canvas>
+
+          <canvas id="canvasMain" [ngClass]="{'drawing': drawing}" width="500" height="500"
+                  (click)="canvasClick($event)"></canvas>
+
+        </div>
+        <div class="infoBlock">
+          <div id="infoDiv" class="bubble top">
+            <form action="">
+              Enter object name:<br>
+              <input id="objectText" type="text" name="object">
+              <br>
+              Enter attributes:<br>
+              <textarea id="attributesText" name="attributes"></textarea>
+              <br><br>
+              <button type=button (click)="doneInfoDiv()">Done</button> &nbsp;
+              <button type=button (click)="undoInfoDiv()">Undo (close)</button> &nbsp;
+              <button type=button (click)="deleteInfoDiv()">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+      <hr>
+      <hr>
+      <hr>
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">
