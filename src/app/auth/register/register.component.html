@@ -1,0 +1,56 @@
+<h1>Registration</h1>
+<form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label>
+      Email:
+    </label>
+    <input type="text" formControlName="email" class="form-control" placeholder="Enter email">
+    <div *ngIf="email.invalid && (email.dirty || email.touched)"
+         class="alert alert-danger">
+
+      <div *ngIf="email.errors.required">
+        Email is required.
+      </div>
+      <div *ngIf="email.errors.email">
+        Please provide a valid email address.
+      </div>
+      <div *ngIf="email.errors.maxlength">
+        Email must not exceed 100 characters. Are you trying an sql injection?
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>
+      Password:
+    </label>
+    <input type="text" formControlName="password" class="form-control" placeholder="Enter password">
+    <div *ngIf="password.invalid && (password.dirty || password.touched)"
+         class="alert alert-danger">
+
+      <div *ngIf="password.errors.required">
+        Password is required.
+      </div>
+      <div *ngIf="password.errors.maxlength">
+        Password must not exceed 100 characters. Are you trying an sql injection?
+      </div>
+      <div *ngIf="password.errors.minlength">
+        Password must contain more than 6 symbols. Safety?
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>
+      Confirm Password:
+    </label>
+    <input type="text" formControlName="conf_password" class="form-control" placeholder="Confirm password">
+    <div *ngIf="RegisterForm.errors?.NotSame && (RegisterForm.touched || RegisterForm.dirty)"
+         class="cross-validation-error-message alert alert-danger">
+      Passwords should match
+    </div>
+  </div>
+
+  <button class="btn btn-primary" type="submit" [disabled]="!RegisterForm.valid">Submit</button>
+  <a class="pull-right" routerLink="../login">Already have an account?</a>
+</form>
