@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {MainpageComponent} from './mainpage/mainpage.component';
+import {BodyComponent} from './categories/body/body.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'home',
     pathMatch: 'full', component: MainpageComponent,
+  },
+  {
+    path: 'categories',
+    pathMatch: 'full', component: BodyComponent,
   }
 ];
 

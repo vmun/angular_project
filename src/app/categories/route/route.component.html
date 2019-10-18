@@ -1,0 +1,9 @@
+<div class="row route-body">
+  <span class="slash"></span>
+  <ng-container *ngFor="let route of routes; let i = index">
+    <div class="route" (click)="changeCategory(route.id)">
+      <h5>{{route.name}}</h5>
+    </div>
+    <span class="slash"></span>
+  </ng-container>
+</div>

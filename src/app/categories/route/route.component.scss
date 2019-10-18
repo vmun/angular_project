@@ -1,0 +1,25 @@
+.route-body {
+  background: #343a40;
+  color: white;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.route {
+  background: rgba(0,0,0,0);
+  padding: 10px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+.route:hover {
+  background: rgba(0,0,0,0.3);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.slash {
+  width: 3px;
+  height: 32px;
+  background: rgba(255,255,255,0.5);
+  margin: 10px;
+}
