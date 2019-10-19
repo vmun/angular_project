@@ -1,0 +1,40 @@
+.button-div {
+  margin: 20px;
+}
+
+.start-now {
+  vertical-align: center;
+  width: 300px;
+  height: 80px;
+  font-size: 40px;
+  border-radius: 20px;
+  border: transparent;
+  font-family: Rockwell;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.8);
+  padding: auto;
+  background-color: rgb(19, 59, 119);
+  color: white;
+  transition: 0.3s;
+}
+.start-now:hover {
+  background-color: rgb(28, 82, 163);
+  transition: 0.3s;
+}
+
+.logout {
+  vertical-align: center;
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  margin-left: 15px;
+  box-shadow: 0 2px 2px rgba(135, 161, 232, 0.8);
+  background-color: white;
+  font-size: 20px;
+  border-radius: 10px;
+  transition: 0.3s;
+  border: 0;
+}
+.logout:hover {
+  background-color: rgb(135, 161, 232);
+  transition: 0.3s;
+}

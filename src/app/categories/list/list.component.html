@@ -1,5 +1,7 @@
-<ng-container *ngFor="let category of childs; let i = index">
-  <div class="row list-item" (click)="changeCategory(category.id)">
-    <h5>{{category.name}}</h5>
-  </div>
-</ng-container>
+<div class="list">
+  <ng-container *ngFor="let category of childs; let i = index">
+    <div class="row list-item" (click)="changeCategory(category.id)">
+      <h5>{{category.name}}</h5>
+    </div>
+  </ng-container>
+</div>
