@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'categories',
-    pathMatch: 'full', component: BodyComponent,
+    loadChildren: () => import('./categories/categories.module').then(mod => mod.CategoriesModule)
   }
 ];
 

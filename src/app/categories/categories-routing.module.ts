@@ -11,4 +11,4 @@ const categoryRoutes = [
   imports: [RouterModule.forChild(categoryRoutes)],
   exports: [RouterModule]
 })
-export class AuthRoutingModule { }
+export class CategoriesRoutingModule { }

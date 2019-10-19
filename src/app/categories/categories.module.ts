@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { RouteComponent } from './route/route.component';
 import { ListComponent } from './list/list.component';
 import { BodyComponent } from './body/body.component';
+import {CategoriesRoutingModule} from './categories-routing.module';
 
 
 
 @NgModule({
   declarations: [RouteComponent, ListComponent, BodyComponent],
   imports: [
-    CommonModule
+    CommonModule, CategoriesRoutingModule
   ]
 })
 export class CategoriesModule { }
