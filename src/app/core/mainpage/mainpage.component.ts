@@ -30,13 +30,7 @@ export class MainpageComponent implements OnInit {
     this.datapassservice.user.next('anonymous');
     this.user = 'anonymous';
     this.logged = false;
+    localStorage.removeItem('token');
   }
 
-  startNow() {
-    if (this.logged) {
-      this.router.navigateByUrl('categories');
-    } else {
-      this.router.navigateByUrl('auth/login');
-    }
-  }
 }

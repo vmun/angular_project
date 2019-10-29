@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
     console.warn(this.loginForm.value);
     this.datapassservice.user.next(this.loginForm.get('email').value);
     console.warn(this.loginForm.get('email').value);
+    localStorage.setItem('token', 'abcd');
     this.router.navigateByUrl('home');
   }
 }
