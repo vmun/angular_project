@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {PasswordSameValidator} from '../../shared/FieldsSameValidator.directive';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {DataPassService} from '../../shared/datapass.service';
 import {stringify} from 'querystring';
 
@@ -12,6 +12,8 @@ import {stringify} from 'querystring';
 })
 export class LoginComponent implements OnInit {
 
+  returnUrl: string;
+
   loginForm = new FormGroup({
     email: new FormControl('', [
       Validators.required, Validators.email, Validators.maxLength(100)]),
@@ -21,10 +23,11 @@ export class LoginComponent implements OnInit {
   });
 
 
-  constructor(private router: Router, private datapassservice: DataPassService) {
+  constructor(private route: ActivatedRoute, private router: Router, private datapassservice: DataPassService) {
   }
 
   ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || 'home';
   }
 
   get email() {
@@ -41,6 +44,6 @@ export class LoginComponent implements OnInit {
     this.datapassservice.user.next(this.loginForm.get('email').value);
     console.warn(this.loginForm.get('email').value);
     localStorage.setItem('token', 'abcd');
-    this.router.navigateByUrl('home');
+    this.router.navigateByUrl(this.returnUrl);
   }
 }
