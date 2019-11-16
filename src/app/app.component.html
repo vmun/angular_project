@@ -18,88 +18,79 @@
   </div>
 </nav>
 
-<div [@customAnimations]="container && container.activatedRouteData
-      && container.activatedRouteData['animation']">
-  <div>
-    <div class="container" style="min-height: 80vh; margin-top: 30px; ">
-      <div class="row">
-        <div class="col-md-12">
-          <div>
-            <router-outlet #container='outlet'></router-outlet>
-          </div>
-        </div>
-      </div>
+<div class="container" style="min-height: 80vh; margin-top: 30px; ">
+  <div class="row">
+    <div class="col-md-12">
+      <router-outlet></router-outlet>
     </div>
   </div>
-
 </div>
 
+<div class="jumbotron text-center bg-dark text-white" style="margin-bottom:0; max-height:30vh">
 
-<!--<div class="jumbotron text-center bg-dark text-white" style="margin-bottom:0; max-height:30vh">-->
+  <!-- Footer Links -->
+  <div class="container-fluid text-center text-lg-left">
 
-<!--  &lt;!&ndash; Footer Links &ndash;&gt;-->
-<!--  <div class="container-fluid text-center text-lg-left">-->
+    <!-- Grid row -->
+    <div class="row">
 
-<!--    &lt;!&ndash; Grid row &ndash;&gt;-->
-<!--    <div class="row">-->
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
 
-<!--      &lt;!&ndash; Grid column &ndash;&gt;-->
-<!--      <div class="col-md-6 mt-md-0 mt-3">-->
+        <!-- Content -->
+        <h5 class="text-uppercase">Footer Content</h5>
+        <p>Here you can use rows and columns to organize your footer content.</p>
 
-<!--        &lt;!&ndash; Content &ndash;&gt;-->
-<!--        <h5 class="text-uppercase">Footer Content</h5>-->
-<!--        <p>Here you can use rows and columns to organize your footer content.</p>-->
-
-<!--      </div>-->
-<!--      &lt;!&ndash; Grid column &ndash;&gt;-->
+      </div>
+      <!-- Grid column -->
 
 
-<!--      &lt;!&ndash; Grid column &ndash;&gt;-->
-<!--      <div class="col-md-3">-->
+      <!-- Grid column -->
+      <div class="col-md-3">
 
-<!--        &lt;!&ndash; Links &ndash;&gt;-->
-<!--        <h5 class="text-uppercase">Links</h5>-->
+        <!-- Links -->
+        <h5 class="text-uppercase">Links</h5>
 
-<!--        <ul class="list-unstyled">-->
-<!--          <li>-->
-<!--            <a href="#!">Link 1</a>-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <a href="#!">Link 2</a>-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <a href="#!">Link 3</a>-->
-<!--          </li>-->
-<!--        </ul>-->
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!">Link 1</a>
+          </li>
+          <li>
+            <a href="#!">Link 2</a>
+          </li>
+          <li>
+            <a href="#!">Link 3</a>
+          </li>
+        </ul>
 
-<!--      </div>-->
-<!--      &lt;!&ndash; Grid column &ndash;&gt;-->
+      </div>
+      <!-- Grid column -->
 
-<!--      &lt;!&ndash; Grid column &ndash;&gt;-->
-<!--      <div class="col-md-3 mb-md-0 mb-3">-->
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
 
-<!--        &lt;!&ndash; Links &ndash;&gt;-->
-<!--        <h5 class="text-uppercase">Links</h5>-->
+        <!-- Links -->
+        <h5 class="text-uppercase">Links</h5>
 
-<!--        <ul class="list-unstyled">-->
-<!--          <li>-->
-<!--            <a href="#!">Link 1</a>-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <a href="#!">Link 2</a>-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <a href="#!">Link 3</a>-->
-<!--          </li>-->
-<!--        </ul>-->
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!">Link 1</a>
+          </li>
+          <li>
+            <a href="#!">Link 2</a>
+          </li>
+          <li>
+            <a href="#!">Link 3</a>
+          </li>
+        </ul>
 
-<!--      </div>-->
-<!--      &lt;!&ndash; Grid column &ndash;&gt;-->
+      </div>
+      <!-- Grid column -->
 
-<!--    </div>-->
-<!--    &lt;!&ndash; Grid row &ndash;&gt;-->
+    </div>
+    <!-- Grid row -->
 
-<!--  </div>-->
-<!--  <div class="footer-copyright text-center py-3">© 2019 Copyright Pak.LLC:-->
-<!--  </div>-->
-<!--</div>-->
+  </div>
+  <div class="footer-copyright text-center py-3">© 2019 Copyright Pak.LLC:
+  </div>
+</div>
