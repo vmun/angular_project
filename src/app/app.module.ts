@@ -8,7 +8,12 @@ import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {CoreModule} from './core/core.module';
+<<<<<<< HEAD
 import {ChartsModule} from 'ng2-charts';
+=======
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+>>>>>>> 03c5aabdc6c6244dbf144dc6c02bde36b4a84b6c
 
 @NgModule({
   declarations: [
@@ -16,6 +21,7 @@ import {ChartsModule} from 'ng2-charts';
     MainpageComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
