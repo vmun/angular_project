@@ -8,6 +8,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {CoreModule} from './core/core.module';
+import {ChartsModule} from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -19,8 +20,8 @@ import {CoreModule} from './core/core.module';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    CoreModule
-
+    CoreModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
