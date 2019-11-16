@@ -5,11 +5,13 @@ import {AppComponent} from './app.component';
 import {MainpageComponent} from './core/mainpage/mainpage.component';
 import {CategoriesModule} from './categories/categories.module';
 import {AppRoutingModule} from './app-routing.module';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {CoreModule} from './core/core.module';
 import {ChartsModule} from 'ng2-charts';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {TestInterceptor} from './shared/test-interceptor';
+import {DataPassService} from "./shared/datapass.service";
 
 
 @NgModule({
@@ -26,7 +28,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     CoreModule,
     ChartsModule
   ],
-  providers: [],
+  providers: [
+    DataPassService, {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TestInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

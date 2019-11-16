@@ -16,9 +16,9 @@ export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
     email: new FormControl('', [
-      Validators.required, Validators.email, Validators.maxLength(100)]),
+      Validators.required, Validators.maxLength(100)]),
     password: new FormControl('', [
-      Validators.required, Validators.maxLength(100), Validators.minLength(6)]),
+      Validators.required, Validators.maxLength(100), Validators.minLength(5)]),
 
   });
 
@@ -41,9 +41,12 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     // TODO: Use EventEmitter with form value
     console.warn(this.loginForm.value);
-    this.datapassservice.user.next(this.loginForm.get('email').value);
     console.warn(this.loginForm.get('email').value);
-    localStorage.setItem('token', 'abcd');
-    this.router.navigateByUrl(this.returnUrl);
+
+    this.datapassservice.auth(this.loginForm.get('email').value, this.loginForm.get('password').value).then(res => {
+      localStorage.setItem('token', res.token);
+      this.router.navigateByUrl(this.returnUrl);
+      this.datapassservice.user.next(this.loginForm.get('email').value);
+    });
   }
 }
