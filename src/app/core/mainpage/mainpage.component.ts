@@ -22,7 +22,6 @@ export class MainpageComponent implements OnInit {
 
     });
   }
-
   public barChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true

@@ -14,17 +14,19 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="auth/login">Login</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="auth/wfwfw">Press me</a>
+      </li>
     </ul>
   </div>
 </nav>
 
-<div [@customAnimations]="container && container.activatedRouteData
-      && container.activatedRouteData['animation']">
+<div >
   <div>
     <div class="container" style="min-height: 80vh; margin-top: 30px; ">
       <div class="row">
         <div class="col-md-12">
-          <div>
+          <div [@customAnimations]="container.activatedRouteData['animation']">
             <router-outlet #container='outlet'></router-outlet>
           </div>
         </div>
