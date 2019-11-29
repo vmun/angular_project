@@ -1,18 +1,22 @@
 <div class="app" style="padding-top: 0px; padding-bottom: 0px; background: transparent">
   <div class="row fit">
-    <div class="col-md-3">
+    <div class="col-md-2">
       <div class="row fit">
-        <div class="col-md-10" style="background: white;">
+        <div class="col-md-9" style="background: white;">
           <app-image-list></app-image-list>
         </div>
-        <div class="col-md-2 no-padding"  style="background: rgb(52,58,64);">
+        <div class="col-md-3 no-padding"  style="background: rgb(52,58,64);">
           <app-toolbox></app-toolbox>
         </div>
       </div>
     </div>
 
-    <div class="col-md-9 no-padding" style="max-width: 100%; max-height: 100%; overflow: auto;">
+    <div class="col-md-8 no-padding" style="max-width: 100%; max-height: 100%; overflow: auto;">
       <app-canvas></app-canvas>
+    </div>
+
+    <div class="col-md-2" style="background: white;">
+      <app-polygon-list></app-polygon-list>
     </div>
   </div>
 </div>

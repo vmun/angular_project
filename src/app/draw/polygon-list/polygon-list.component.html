@@ -1,0 +1,15 @@
+<div style="padding-top: 10px">
+  <h3>Polygon list:</h3>
+  <hr>
+  <div class="list">
+    <mat-action-list>
+      <ng-container *ngFor="let polygon of polygons; let i = index">
+        <mat-list-item style="word-wrap: break-word;">
+          {{i + 1}}. {{polygon.name}}
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </ng-container>
+    </mat-action-list>
+  </div>
+</div>
+

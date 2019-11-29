@@ -6,11 +6,12 @@ import { CanvasComponent } from './canvas/canvas.component';
 import { ImageListComponent } from './image-list/image-list.component';
 import {MatIconModule, MatListModule, MatMenuModule, MatSidenavModule, MatSliderModule} from "@angular/material";
 import { ToolboxComponent } from './toolbox/toolbox.component';
+import { PolygonListComponent } from './polygon-list/polygon-list.component';
 
 
 
 @NgModule({
-  declarations: [BodyComponent, CanvasComponent, ImageListComponent, ToolboxComponent],
+  declarations: [BodyComponent, CanvasComponent, ImageListComponent, ToolboxComponent, PolygonListComponent],
   imports: [
     CommonModule, DrawRoutingModule, MatSidenavModule, MatListModule, MatIconModule, MatMenuModule, MatSliderModule
   ]
