@@ -1,0 +1,47 @@
+<mat-action-list>
+  <mat-list-item>
+    <mat-icon class="white-icon">brush</mat-icon>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+
+  <mat-list-item>
+    <mat-icon class="white-icon">brush</mat-icon>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+
+  <mat-list-item>
+    <mat-icon class="white-icon">brush</mat-icon>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+
+  <mat-list-item>
+    <mat-icon class="white-icon">brush</mat-icon>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+
+  <mat-list-item>
+    <mat-icon class="white-icon">brush</mat-icon>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+
+  <mat-list-item>
+    <mat-icon class="white-icon">brush</mat-icon>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+
+  <mat-list-item [matMenuTriggerFor]="afterMenu" md-prevent-menu-close>
+    <mat-icon class="white-icon">zoom_in</mat-icon>
+    <mat-menu #afterMenu="matMenu" xPosition="after" >
+      <mat-slider (click) = "$event.stopPropagation()" md-prevent-menu-close></mat-slider>
+    </mat-menu>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+
+  <mat-list-item [matMenuTriggerFor]="afterMenu" md-prevent-menu-close>
+    <mat-icon class="white-icon">brightness_medium</mat-icon>
+    <mat-menu #afterMenu="matMenu" xPosition="after" >
+      <mat-slider (click) = "$event.stopPropagation()" md-prevent-menu-close></mat-slider>
+    </mat-menu>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+</mat-action-list>

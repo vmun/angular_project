@@ -3,7 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {MainpageComponent} from './core/mainpage/mainpage.component';
 // import {BodyComponent} from './categories/body/body.component';
 import {AuthcheckGuard} from './shared/guards/authcheck.guard';
-import {CategoriesModule} from './categories/categories.module';
+// import {CategoriesModule} from './categories/categories.module';
 import {NotFoundComponent} from './core/not-found/not-found.component';
 
 const routes: Routes = [
@@ -24,15 +24,20 @@ const routes: Routes = [
     data: {animation: 'Main'}
   },
   {
-    path: '**',
-    component: NotFoundComponent
-  },
-  {
     canActivate: [AuthcheckGuard],
     path: 'categories',
     loadChildren: () => import('./categories/categories.module').then(mod => mod.CategoriesModule),
     // component: BodyComponent,
     data: {animation: 'Categories'}
+  },
+  {
+    canActivate: [AuthcheckGuard],
+    path: 'categories/:id/draw',
+    loadChildren: () => import('./draw/draw.module').then(mod => mod.DrawModule),
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
   }
 ];
 

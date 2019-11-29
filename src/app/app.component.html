@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="height: 8vh">
   <a class="navbar-brand" routerLink="home">SkyMed Labeling</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
@@ -21,21 +21,10 @@
   </div>
 </nav>
 
-<div >
-  <div>
-    <div class="container" style="min-height: 80vh; margin-top: 30px; ">
-      <div class="row">
-        <div class="col-md-12">
-          <div [@customAnimations]="container.activatedRouteData['animation']">
-            <router-outlet #container='outlet'></router-outlet>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
+<!--<div [@customAnimations]="container.activatedRouteData['animation']">-->
+<div>
+  <router-outlet #container='outlet'></router-outlet>
 </div>
-
 
 <!--<div class="jumbotron text-center bg-dark text-white" style="margin-bottom:0; max-height:30vh">-->
 

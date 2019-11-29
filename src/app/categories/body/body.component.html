@@ -1,11 +1,40 @@
-<div class="container-fluid text-center">
-  <div class="row content">
-    <div class="col-md text-left">
-      <h3>Select category</h3>
-      <hr>
+<!--<div class="container-fluid text-center">-->
+<!--  <div class="row content">-->
+<!--    <div class="col-md text-left">-->
+<div class="app">
+  <div class="row">
+    <h3 class="col-md-2">Select category</h3>
+    <div class="col-md-10">
+      <div class="row">
+        <mat-icon mat-list-icon>search</mat-icon>
+        <h4>Search</h4>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <div class="row">
+    <div class="col-md-2">
+      <mat-action-list>
+        <mat-list-item>
+          <mat-icon mat-list-icon>access_time</mat-icon>
+          <h5 mat-line>Recent</h5>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon mat-list-icon>favorite</mat-icon>
+          <h5 mat-line>Favorite</h5>
+        </mat-list-item>
+      </mat-action-list>
+    </div>
+    <div class="cold-md-10">
       <app-route></app-route>
-      <hr>
+      <hr style="width: 100%">
       <app-list></app-list>
     </div>
   </div>
+  <hr>
 </div>
+
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

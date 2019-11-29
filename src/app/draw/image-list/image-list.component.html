@@ -1,0 +1,18 @@
+<div style="padding-top: 10px">
+  <h3>Image list:</h3>
+  <hr>
+  <div class="list">
+    <mat-action-list>
+      <ng-container *ngFor="let image of images; let i = index">
+        <mat-list-item *ngIf="i==current" style="word-wrap: break-word;" (click)="changeImage(image.id)">
+          {{i + 1}}. {{image.name}}
+        </mat-list-item>
+        <mat-list-item *ngIf="i!=current" style="word-wrap: break-word;" (click)="changeImage(image.id)">
+          {{i + 1}}. {{image.name}}
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </ng-container>
+    </mat-action-list>
+  </div>
+</div>
+

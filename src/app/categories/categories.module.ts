@@ -4,13 +4,14 @@ import { RouteComponent } from './route/route.component';
 import { ListComponent } from './list/list.component';
 import { BodyComponent } from './body/body.component';
 import {CategoriesRoutingModule} from './categories-routing.module';
+import {MatIconModule, MatListModule} from "@angular/material";
 
 
 
 @NgModule({
   declarations: [RouteComponent, ListComponent, BodyComponent],
   imports: [
-    CommonModule, CategoriesRoutingModule
+    CommonModule, CategoriesRoutingModule, MatListModule, MatIconModule
   ]
 })
 export class CategoriesModule { }

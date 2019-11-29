@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TempDataService} from '../../shared/temp-data.service';
 import {DataPassService} from '../../shared/datapass.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -14,7 +15,7 @@ export class ListComponent implements OnInit {
   categories = this.tempData.categories;
   childs = [];
 
-  constructor(private tempData: TempDataService, private datapassservice: DataPassService) {
+  constructor(private tempData: TempDataService, private datapassservice: DataPassService, private router: Router) {
     this.datapassservice.currentCategory$.subscribe((data) => {
       this.current = data;
       this.getChilds();
@@ -22,9 +23,16 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.current = 0;
+    this.changeCategory(0);
   }
 
   changeCategory(index) {
+    const currentCat = this.categories.find(cat => cat.id === index);
+    if (currentCat.endpoint === true) {
+      this.router.navigateByUrl('categories/' + currentCat.id + '/draw');
+      return;
+    }
     this.datapassservice.category.next(index);
   }
 

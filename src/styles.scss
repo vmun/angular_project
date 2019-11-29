@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+html { height:100%; }
+
 
 body {
   background-image: url('assets/back.jpg');
+  height:100%;
   background-size:cover
 ;
 }
@@ -16,3 +19,27 @@ body {
   border-radius: 10px;
   padding: 100px;
 }
+
+.app {
+  background: white;
+  padding: 20px;
+  height: 92vh;
+}
+
+.fit {
+  height: 92vh;
+}
+
+.no-padding {
+  padding: 0px;
+}
+
+.white-icon {
+  color: white;
+}
+.white-icon svg {
+  fill: white;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

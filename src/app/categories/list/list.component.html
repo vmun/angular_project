@@ -1,7 +1,15 @@
-<div class="list">
-  <ng-container *ngFor="let category of childs; let i = index">
-    <div class="row list-item" (click)="changeCategory(category.id)">
-      <h5>{{category.name}}</h5>
-    </div>
-  </ng-container>
-</div>
+<!--<div class="list">-->
+<!--  <ng-container *ngFor="let category of childs; let i = index">-->
+<!--    <div class="row list-item" (click)="changeCategory(category.id)">-->
+<!--      <h5>{{category.name}}</h5>-->
+<!--    </div>-->
+<!--  </ng-container>-->
+<!--</div>-->
+<mat-action-list>
+  <mat-list-item *ngFor="let category of childs" (click)="changeCategory(category.id)">
+    <mat-icon *ngIf="category.endpoint == false" mat-list-icon>folder</mat-icon>
+    <mat-icon *ngIf="category.endpoint == true" mat-list-icon>image</mat-icon>
+    <h5 mat-line>{{category.name}}</h5>
+  </mat-list-item>
+</mat-action-list>
+
