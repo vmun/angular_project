@@ -5,24 +5,33 @@ import {Directive, ElementRef, Input} from '@angular/core';
 })
 export class BrightnessDirective {
 
-  _brightnessValue;
-  get brightnessValue() {
-    return this._brightnessValue;
-  }
+  // _brightnessValue;
+  // get brightnessValue() {
+  //   return this._brightnessValue;
+  // }
 
-  @Input('opacityValue')
+  @Input('brightnessValue')
   set brightnessValue(value) {
-    this._brightnessValue = value;
-    this.updateOpacity();
+    switch (value[0]) {
+      case 'brightness':
+        this.brightness = value[1];
+        break;
+      case 'contrast':
+        this.contrast = value[1];
+    }
+    this.updateBrightness();
   }
 
+  brightness = 1;
+  contrast = 1;
 
   constructor(private element: ElementRef) {
-    element.nativeElement.style.filter = 'brightness(' + this.brightnessValue + ')';
+    // element.nativeElement.style.filter = 'brightness(' + this.brightnessValue[1] + ')';
+    // element.nativeElement.style.filter = 'contrast(' + this.brightnessValue[1] + ')';
   }
 
-  updateOpacity() {
-    this.element.nativeElement.style.filter = 'brightness(' + this.brightnessValue + ')';
+  updateBrightness() {
+    this.element.nativeElement.style.filter = 'brightness(' + this.brightness + ') contrast(' + this.contrast + ')';
   }
 
 }

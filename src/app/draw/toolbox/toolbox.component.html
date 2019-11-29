@@ -43,17 +43,15 @@
       <mat-slider (click)="$event.stopPropagation()"
                   md-prevent-menu-close
                   [(ngModel)]="brightnessValue"
-                  [max]="1"
-                  [value]="0.5"
-                  [step]="0.01">
+                  [max]="2"
+                  [step]="0.02">
       </mat-slider>
       <mat-divider></mat-divider>
       <mat-slider (click)="$event.stopPropagation()"
                   md-prevent-menu-close
                   [(ngModel)]="contrastValue"
-                  [max]="1"
-                  [value]="0.5"
-                  [step]="0.01">
+                  [max]="2"
+                  [step]="0.02">
       </mat-slider>
     </mat-menu>
   </mat-list-item>
@@ -66,7 +64,6 @@
                   md-prevent-menu-close
                   [(ngModel)]="opacityValue"
                   [max]="1"
-                  [value]="0.5"
                   [step]="0.01">
       </mat-slider>
     </mat-menu>

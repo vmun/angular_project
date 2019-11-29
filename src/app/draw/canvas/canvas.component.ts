@@ -11,6 +11,7 @@ export class CanvasComponent implements OnInit {
 
   currentImage = 0;
   opacity = 0.5;
+  brightness = 1;
 
   imageElement: HTMLImageElement;
   canvasElement: HTMLCanvasElement;
@@ -28,6 +29,9 @@ export class CanvasComponent implements OnInit {
     });
     this.datapassservice.currentOpacity$.subscribe((data) => {
       this.opacity = data;
+    });
+    this.datapassservice.currentBrightness$.subscribe((data) => {
+      this.brightness = data;
     });
   }
 

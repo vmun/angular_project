@@ -16,6 +16,7 @@ export class DataPassService extends MainService {
     this.currentCategory$ = this.category.asObservable();
     this.sendedPolygon$ = this.polygon.asObservable();
     this.currentOpacity$ = this.opacity.asObservable();
+    this.currentBrightness$ = this.brightness.asObservable();
   }
   user = new BehaviorSubject('anonymous');
   currentUser$: Observable<string>;
@@ -31,6 +32,9 @@ export class DataPassService extends MainService {
 
   opacity = new Subject();
   currentOpacity$: Observable<any>;
+
+  brightness = new Subject();
+  currentBrightness$: Observable<any>;
 
   polygons = this.tempData.polygons;
 
