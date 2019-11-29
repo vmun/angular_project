@@ -1,5 +1,5 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import {AuthResponse, Folder, Image, File, User, Profile, Polygon, Comment, SubFolder, Label} from './models/models';
+import {AuthResponse, Folder, Image, File, User, Profile, Polygon, Comment, SubFolder, Label} from '../models/models';
 import {HttpClient} from '@angular/common/http';
 import {MainService} from './main.service';
 

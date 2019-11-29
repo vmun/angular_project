@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DataPassService} from '../../shared/datapass.service';
+import {DataPassService} from '../../shared/services/datapass.service';
 
 @Component({
   selector: 'app-toolbox',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {TempDataService} from '../../shared/temp-data.service';
-import {DataPassService} from '../../shared/datapass.service';
+import {TempDataService} from '../../shared/services/temp-data.service';
+import {DataPassService} from '../../shared/services/datapass.service';
 
 @Component({
   selector: 'app-canvas',
