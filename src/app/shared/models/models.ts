@@ -1,28 +1,71 @@
-export interface IAuthResponse {
-  token: string;
+export class User {
+  id: number;
   username: string;
-  super: boolean;
+  firstname: string;
+  email: string;
+  superuser: boolean;
 }
 
-export interface IImage {
+export class Profile {
+  id: number;
+  origin: string;
+  bio: string;
+  address: string;
+  avatar: string;
+}
+
+export class AuthResponse {
+  token: string;
+  user: User;
+}
+
+export class SubFolder {
+  id: number;
+  name: string;
+  description: string;
+  parent: string;
+  type: number;
+}
+
+export class Folder {
+  id: number;
+  name: string;
+  description: string;
+  parent: string;
+  type: number;
+  allowed: SubFolder[];
+}
+
+export class Image {
   id: number;
   name: string;
   file: string;
   extra: boolean;
 }
 
-export interface IFile {
+export class File {
   url: string;
 }
 
-export interface ILabel {
+export class Label {
   id: number;
   name: string;
 }
 
-export interface ICategory {
+export class Polygon {
   id: number;
+  points: any[] = [];
+  label: Label;
   name: string;
-  description: string;
-  parent: string;
+  text: string;
+  image: number;
+}
+
+
+export class Comment {
+  id: number;
+  datecreated: string;
+  text: string;
+  image: number;
+  creatorname: string;
 }
