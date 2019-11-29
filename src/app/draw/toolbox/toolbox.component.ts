@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DataPassService} from '../../shared/datapass.service';
 
 @Component({
   selector: 'app-toolbox',
@@ -7,7 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolboxComponent implements OnInit {
 
-  constructor() { }
+  set opacityValue(value) {
+    this.datapassservice.opacity.next(value);
+  }
+
+  set brightnessValue(value) {
+    this.datapassservice.opacity.next(value);
+  }
+
+  set contrastValue(value) {
+    this.datapassservice.opacity.next(value);
+  }
+
+  constructor(private datapassservice: DataPassService) { }
 
   ngOnInit() {
   }

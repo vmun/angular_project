@@ -10,13 +10,14 @@ import {DataPassService} from '../../shared/datapass.service';
 export class CanvasComponent implements OnInit {
 
   currentImage = 0;
+  opacity = 0.5;
 
   imageElement: HTMLImageElement;
   canvasElement: HTMLCanvasElement;
   canvasCtx;
 
   pointsBuffer = [];
-  polygonsBuffer = [];
+  polygonsBuffer = this.datapassservice.polygons.filter(pol => pol.image === this.currentImage);
 
   constructor(private tempData: TempDataService, private datapassservice: DataPassService) {
     this.datapassservice.currentImage$.subscribe((data) => {
@@ -24,6 +25,9 @@ export class CanvasComponent implements OnInit {
         this.currentImage = data;
         this.changeImage(data);
       }
+    });
+    this.datapassservice.currentOpacity$.subscribe((data) => {
+      this.opacity = data;
     });
   }
 
@@ -38,12 +42,13 @@ export class CanvasComponent implements OnInit {
       this.canvasElement.height = this.imageElement.clientHeight;
       this.canvasElement.width = this.imageElement.clientWidth;
       this.canvasCtx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
+      this.drawPolygons();
     };
   }
 
   changeImage(index) {
     this.imageElement.setAttribute( 'src', this.tempData.imagesFull.find(im => im.id === index).url);
-    this.polygonsBuffer = [];
+    this.polygonsBuffer = this.datapassservice.polygons.filter(pol => pol.image === this.currentImage);
     this.pointsBuffer = [];
   }
 
@@ -51,14 +56,16 @@ export class CanvasComponent implements OnInit {
 
   canvasClick(event) {
     const point = {x: event.offsetX, y: event.offsetY};
-    this.drawPoint(point, 'rgba(255, 0, 0, 0.5)');
+    this.drawPoint(point, 'rgba(255, 0, 0, 1)');
 
     if (this.pointsBuffer.length > 0) {
-      this.drawLine(point, 'rgba(255, 0, 0, 0.5)');
+      this.drawLine(point, 'rgba(255, 0, 0, 1)');
     }
 
     if ((this.pointsBuffer.length >= 3) && this.isNear(point, this.pointsBuffer[0])) {
-      this.polygonsBuffer.push(this.pointsBuffer);
+      this.polygonsBuffer.push({id: -1, name: 'poly', image: this.currentImage, points: this.pointsBuffer});
+      this.datapassservice.polygons.push({id: -1, name: 'poly', image: this.currentImage, points: this.pointsBuffer});
+      this.datapassservice.polygon.next({id: -1, name: 'poly', image: this.currentImage, points: this.pointsBuffer});
       this.drawPolygons();
       this.pointsBuffer = [];
     } else {
@@ -88,14 +95,14 @@ export class CanvasComponent implements OnInit {
 
   drawPolygons() {
     this.canvasCtx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
-    this.canvasCtx.fillStyle = 'rgba(255, 0, 0, 0.5)';
+    this.canvasCtx.fillStyle = 'rgba(255, 0, 0, 1)';
     this.canvasCtx.beginPath();
-    this.polygonsBuffer.forEach((points) => {
-      points.forEach((point, index) => {
+    this.polygonsBuffer.forEach((poly) => {
+      poly.points.forEach((point, index) => {
         if (index === 0) {
           this.canvasCtx.moveTo(point.x, point.y);
         } else {
-          this.canvasCtx.lineTo(points[index].x, points[index].y);
+          this.canvasCtx.lineTo(poly.points[index].x, poly.points[index].y);
         }
       });
     });

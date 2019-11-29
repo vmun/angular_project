@@ -29,18 +29,46 @@
   </mat-list-item>
   <mat-divider></mat-divider>
 
-  <mat-list-item [matMenuTriggerFor]="afterMenu" md-prevent-menu-close>
+  <mat-list-item [matMenuTriggerFor]="zoomMenu" md-prevent-menu-close>
     <mat-icon class="white-icon">zoom_in</mat-icon>
-    <mat-menu #afterMenu="matMenu" xPosition="after" >
+    <mat-menu #zoomMenu="matMenu" xPosition="after" >
       <mat-slider (click) = "$event.stopPropagation()" md-prevent-menu-close></mat-slider>
     </mat-menu>
   </mat-list-item>
   <mat-divider></mat-divider>
 
-  <mat-list-item [matMenuTriggerFor]="afterMenu" md-prevent-menu-close>
+  <mat-list-item [matMenuTriggerFor]="brMenu" md-prevent-menu-close>
     <mat-icon class="white-icon">brightness_medium</mat-icon>
-    <mat-menu #afterMenu="matMenu" xPosition="after" >
-      <mat-slider (click) = "$event.stopPropagation()" md-prevent-menu-close></mat-slider>
+    <mat-menu #brMenu="matMenu" xPosition="after" >
+      <mat-slider (click)="$event.stopPropagation()"
+                  md-prevent-menu-close
+                  [(ngModel)]="brightnessValue"
+                  [max]="1"
+                  [value]="0.5"
+                  [step]="0.01">
+      </mat-slider>
+      <mat-divider></mat-divider>
+      <mat-slider (click)="$event.stopPropagation()"
+                  md-prevent-menu-close
+                  [(ngModel)]="contrastValue"
+                  [max]="1"
+                  [value]="0.5"
+                  [step]="0.01">
+      </mat-slider>
+    </mat-menu>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+
+  <mat-list-item [matMenuTriggerFor]="opMenu" md-prevent-menu-close>
+    <mat-icon class="white-icon">opacity</mat-icon>
+    <mat-menu #opMenu="matMenu" xPosition="after" >
+      <mat-slider (click)="$event.stopPropagation()"
+                  md-prevent-menu-close
+                  [(ngModel)]="opacityValue"
+                  [max]="1"
+                  [value]="0.5"
+                  [step]="0.01">
+      </mat-slider>
     </mat-menu>
   </mat-list-item>
   <mat-divider></mat-divider>

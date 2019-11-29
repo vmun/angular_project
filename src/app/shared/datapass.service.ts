@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import { TempDataService } from './temp-data.service';
 import {MainService} from './main.service';
@@ -8,6 +8,15 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class DataPassService extends MainService {
+
+  constructor(private tempData: TempDataService, http: HttpClient) {
+    super(http);
+    this.currentUser$ = this.user.asObservable();
+    this.currentImage$ = this.image.asObservable();
+    this.currentCategory$ = this.category.asObservable();
+    this.sendedPolygon$ = this.polygon.asObservable();
+    this.currentOpacity$ = this.opacity.asObservable();
+  }
   user = new BehaviorSubject('anonymous');
   currentUser$: Observable<string>;
 
@@ -17,12 +26,13 @@ export class DataPassService extends MainService {
   image = new BehaviorSubject(0);
   currentImage$: Observable<any>;
 
-  constructor(private tempData: TempDataService, http: HttpClient) {
-    super(http);
-    this.currentUser$ = this.user.asObservable();
-    this.currentImage$ = this.image.asObservable();
-    this.currentCategory$ = this.category.asObservable();
-  }
+  polygon = new Subject();
+  sendedPolygon$: Observable<any>;
+
+  opacity = new Subject();
+  currentOpacity$: Observable<any>;
+
+  polygons = this.tempData.polygons;
 
   auth(username: any, password: any): Promise<any> {
     return this.post('http://localhost:8000/login/', {

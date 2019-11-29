@@ -1,4 +1,4 @@
 <div style="height: 100%; width: 100%">
   <img style="height: 100%; display: block; user-select: none;" id="image"/>
-  <canvas style="position: absolute; display: block; margin: auto;" id="canvas" (click)="canvasClick($event)"></canvas>
+  <canvas appOpacity [opacityValue]="opacity" style="position: absolute; display: block; margin: auto;" id="canvas" (click)="canvasClick($event)"></canvas>
 </div>

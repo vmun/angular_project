@@ -30,5 +30,8 @@ export class TempDataService {
     {id: 5, name: 'im5', url: 'https://sun9-22.userapi.com/c851128/v851128178/27e53/IKX3sudBnIs.jpg'},
   ];
 
+  polygons = [];
+
+
   constructor() { }
 }
