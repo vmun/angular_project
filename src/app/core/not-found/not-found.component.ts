@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {GachaService} from './gacha/gacha.service';
+import {BannerUnit} from './gacha/banner-unit';
 
 @Component({
   selector: 'app-not-found',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./not-found.component.scss']
 })
 export class NotFoundComponent implements OnInit {
+  banners: BannerUnit[];
 
-  constructor() { }
+  constructor(private gachaService: GachaService) {
+  }
 
   ngOnInit() {
+    this.banners = this.gachaService.getBanners();
   }
 
 }
