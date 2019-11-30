@@ -47,6 +47,6 @@ export class MainGachaComponent implements OnInit, OnDestroy {
   getAds() {
     this.interval = setInterval(() => {
       this.loadComponent();
-    }, 5000);
+    }, 15000);
   }
 }

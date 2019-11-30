@@ -5,7 +5,7 @@ import {ProfileComponent} from './profile/profile.component';
 
 const authRoutes = [
   { path: '', redirectTo: 'login'},
-  { path: 'profile', component: ProfileComponent},
+  { path: 'info', component: ProfileComponent},
 ];
 
 @NgModule({

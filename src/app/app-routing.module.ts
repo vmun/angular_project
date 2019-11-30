@@ -14,6 +14,11 @@ const routes: Routes = [
     data: {animation: 'Auth'}
   },
   {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then(mod => mod.ProfileModule),
+    data: {animation: 'Auth'}
+  },
+  {
     path: '',
     pathMatch: 'full', component: MainpageComponent,
     data: {animation: 'Main'}

@@ -12,7 +12,6 @@ import {ChartsModule} from 'ng2-charts';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TestInterceptor} from './shared/test-interceptor';
 import {DataPassService} from './shared/services/datapass.service';
-import {ProfilepageComponent} from './core/profilepage/profilepage.component';
 import {gachaErrorPipe} from './core/not-found/gacha/error.pipe';
 import {GachaDirective} from './core/not-found/gacha/gacha.directive';
 
@@ -21,7 +20,6 @@ import {GachaDirective} from './core/not-found/gacha/gacha.directive';
   declarations: [
     AppComponent,
     MainpageComponent,
-    ProfilepageComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -38,8 +36,7 @@ import {GachaDirective} from './core/not-found/gacha/gacha.directive';
       useClass: TestInterceptor,
       multi: true
     }],
-  exports: [
-  ],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

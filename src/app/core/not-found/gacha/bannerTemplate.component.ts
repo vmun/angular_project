@@ -4,12 +4,12 @@ import {BannerComponent} from './Banner.component';
 
 @Component({
   template: `
-      <div class="row" style="align-content: space-evenly">
-          <h2>Error 404, {{data.Name}} not found</h2>
-          <br>
-          <div><img [src]="data.Path" width="400"></div>
-          <app-gacha-banner>loading</app-gacha-banner>
-      </div>
+      <mat-grid-list cols="3" rowHeight="70vh">
+          <mat-grid-tile>
+              <h2>Error 404, {{data.Name}} not found</h2></mat-grid-tile>
+          <mat-grid-tile><div><img [src]="data.Path" width="400"></div></mat-grid-tile>
+          <mat-grid-tile><app-gacha-banner>loading</app-gacha-banner></mat-grid-tile>
+      </mat-grid-list>
   `
 })
 export class BannerTemplateComponent implements BannerComponent {

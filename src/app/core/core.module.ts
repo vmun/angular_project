@@ -8,6 +8,7 @@ import {FormsModule} from '@angular/forms';
 import {BannerTemplateComponent} from './not-found/gacha/bannerTemplate.component';
 import {GachaService} from './not-found/gacha/gacha.service';
 import {MainGachaComponent} from './not-found/gacha/main-gacha.component';
+import {MatGridListModule} from '@angular/material';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {MainGachaComponent} from './not-found/gacha/main-gacha.component';
   declarations: [NotFoundComponent, gachaErrorPipe, GachaDirective, GachaBannerComponent, MainGachaComponent, BannerTemplateComponent],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    MatGridListModule
   ],
   entryComponents: [BannerTemplateComponent,],
 })
