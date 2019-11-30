@@ -13,8 +13,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TestInterceptor} from './shared/test-interceptor';
 import {DataPassService} from './shared/services/datapass.service';
 import {ProfilepageComponent} from './core/profilepage/profilepage.component';
-import {gachaErrorPipe} from './core/not-found/error.pipe';
-import {GachaDirective} from './core/not-found/gacha.directive';
+import {gachaErrorPipe} from './core/not-found/gacha/error.pipe';
+import {GachaDirective} from './core/not-found/gacha/gacha.directive';
 
 
 @NgModule({
