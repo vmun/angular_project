@@ -6,3 +6,4 @@ export class gachaErrorPipe implements PipeTransform {
     return Math.random() * value / (isNaN(chance) ? 1 : chance);
   }
 }
+

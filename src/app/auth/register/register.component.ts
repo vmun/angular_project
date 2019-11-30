@@ -45,9 +45,12 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
-    console.warn(this.RegisterForm.value);
-    this.datapassservice.user.next(this.RegisterForm.get('email').value);
-    console.warn(this.RegisterForm.get('email').value);
-    this.router.navigateByUrl('../login');
+    this.datapassservice.register(
+      this.RegisterForm.get('username').value,
+      this.RegisterForm.get('email').value,
+      this.RegisterForm.get('password').value).then(res => {
+      this.router.navigateByUrl('auth/login');
+    });
+
   }
 }
