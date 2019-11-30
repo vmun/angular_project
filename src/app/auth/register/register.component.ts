@@ -13,6 +13,8 @@ export class RegisterComponent implements OnInit {
 
 
   RegisterForm = new FormGroup({
+      username: new FormControl('', [
+        Validators.required, Validators.maxLength(100)]),
       email: new FormControl('', [
         Validators.required, Validators.email, Validators.maxLength(100)]),
       password: new FormControl('', [
@@ -29,6 +31,10 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+  get username() {
+    return this.RegisterForm.get('username');
+  }
+
   get email() {
     return this.RegisterForm.get('email');
   }
@@ -42,6 +48,6 @@ export class RegisterComponent implements OnInit {
     console.warn(this.RegisterForm.value);
     this.datapassservice.user.next(this.RegisterForm.get('email').value);
     console.warn(this.RegisterForm.get('email').value);
-    this.router.navigateByUrl('home');
+    this.router.navigateByUrl('../login');
   }
 }

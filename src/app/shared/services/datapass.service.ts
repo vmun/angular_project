@@ -1,8 +1,9 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import { TempDataService } from './temp-data.service';
+import {TempDataService} from './temp-data.service';
 import {MainService} from './main.service';
 import {HttpClient} from '@angular/common/http';
+import {AuthResponse, Folder, Image, Label, Polygon} from '../models/models';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,7 @@ export class DataPassService extends MainService {
     this.currentOpacity$ = this.opacity.asObservable();
     this.currentBrightness$ = this.brightness.asObservable();
   }
+
   user = new BehaviorSubject('anonymous');
   currentUser$: Observable<string>;
 
@@ -38,18 +40,92 @@ export class DataPassService extends MainService {
 
   polygons = this.tempData.polygons;
 
-  auth(username: any, password: any): Promise<any> {
-    return this.post('http://localhost:8000/login/', {
-      username: username,
-      password: password
+  host = 'http://localhost:8000/';
+
+  auth(user: string, pass: string): Promise<AuthResponse> {
+    return this.post(this.host + 'api/token/', {
+      username: user,
+      password: pass
     });
   }
 
-  register(username: any, password1: any, email: any): Promise<any> {
-    return this.post('http://localhost:8000/register/', {
-      username: username,
-      email: email,
-      password: password1
+  updatepassword(oldpass: string, newpass: string): Promise<AuthResponse> {
+    return this.post(this.host + 'api/users/set_password', {
+      old_password: oldpass,
+      new_password: newpass
+    });
+  }
+
+
+  register(user: string, mail: string, pass: string): Promise<any> {
+    return this.post(this.host + 'api/users/', {
+      username: user,
+      email: mail,
+      password: pass
+    });
+  }
+
+  getImagePolygons(imageId): Promise<any[]> {
+    return this.get(this.host + 'api2/image/' + imageId + '/polygons/', {});
+  }
+
+  postPolygon(polygon: Polygon): Promise<Polygon> {
+    const data = [];
+    for (let point of polygon.points) {
+      data.push([point.offsetX, point.offsetY]);
+    }
+    return this.post(this.host + 'api2/polygon/', {
+      points: JSON.stringify(data),
+      label: polygon.label.id,
+      text: polygon.text,
+      image: polygon.image
+    });
+  }
+
+  deletePolygon(id: number): Promise<any> {
+    return this.delete(this.host + `api2/polygon/${id}/`, {});
+  }
+
+  getImages(id: number): Promise<Image[]> {
+    return this.get(this.host + `api2/folders/${id}/`, {});
+  }
+
+  getSubFolders(id: number): Promise<Folder[]> {
+    return this.get(this.host + `api2/folders/${id}/`, {});
+  }
+
+  getRootFolders(): Promise<Folder[]> {
+    return this.get(this.host + `api/folders/`, {});
+  }
+
+  getComment(id: number): Promise<any[]> {
+    return this.get(this.host + `api2/image/${id}/comments/`, {});
+  }
+
+  postComment(comment: string, imageId: number): Promise<any> {
+    return this.post(this.host + 'api2/comment/', {
+      text: comment,
+      image: imageId
+    });
+  }
+
+  putComment(comment: string, id: number) {
+    return this.put(this.host + `api2/comment/${id}/`, {
+      text: comment
+    });
+  }
+
+  deleteComment(id: number) {
+    return this.delete(this.host + `api2/comment/${id}/`, {});
+  }
+
+  getLabels(): Promise<Label[]> {
+    return this.get(this.host + `api2/labels/`, {});
+  }
+
+  postLabel(labelName): Promise<Label> {
+    return this.post(this.host + 'api2/labels/', {
+      name: labelName
     });
   }
 }

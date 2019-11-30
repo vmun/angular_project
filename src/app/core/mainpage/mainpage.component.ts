@@ -41,7 +41,7 @@ export class MainpageComponent implements OnInit {
     this.datapassservice.user.next('anonymous');
     this.user = 'anonymous';
     this.logged = false;
-    localStorage.removeItem('token');
+    localStorage.clear();
   }
 
 }
