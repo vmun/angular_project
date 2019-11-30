@@ -1,48 +1,61 @@
-<div class="content">
-  <h1>Login</h1>
+<div class="container" style="min-height: 80vh; margin-top: 30px; ">
+  <div class="row">
+    <div class="col-md-12">
 
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label>
-        Username:
-      </label>
-      <input type="text" formControlName="username" class="form-control" placeholder="Enter username">
-      <div *ngIf="username.invalid && (username.dirty || username.touched)"
-           class="alert alert-danger">
+      <div class="container-fluid text-center">
+        <div class="row">
 
-        <div *ngIf="username.errors.required">
-          Username is required.
-        </div>
-        <div *ngIf="username.errors.maxlength">
-          Username must not exceed 100 characters. Are you trying an sql injection?
+          <div class="col-lg text-justify content">
+            <h1>Login</h1>
+
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label>
+                  Username:
+                </label>
+                <input type="text" formControlName="username" class="form-control" placeholder="Enter username">
+                <div *ngIf="username.invalid && (username.dirty || username.touched)"
+                     class="alert alert-danger">
+
+                  <div *ngIf="username.errors.required">
+                    Username is required.
+                  </div>
+                  <div *ngIf="username.errors.maxlength">
+                    Username must not exceed 100 characters. Are you trying an sql injection?
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>
+                  Password:
+                </label>
+                <input type="password" formControlName="password" class="form-control " placeholder="Enter password">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                     class="alert alert-danger">
+
+                  <div *ngIf="password.errors.required">
+                    Password is required.
+                  </div>
+                  <div *ngIf="password.errors.maxlength">
+                    Password must not exceed 100 characters. Are you trying an sql injection?
+                  </div>
+                  <div *ngIf="password.errors.minlength">
+                    Password must contain more than 5 symbols. Safety?
+                  </div>
+                </div>
+              </div>
+
+
+
+
+              <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid">Submit</button>
+              <a class="pull-right" style="margin-left: 10px;" routerLink="../register">Don't have an account yet? Create a new one</a>
+            </form>
+          </div>
+
         </div>
       </div>
     </div>
-
-    <div class="form-group">
-      <label>
-        Password:
-      </label>
-      <input type="password" formControlName="password" class="form-control " placeholder="Enter password">
-      <div *ngIf="password.invalid && (password.dirty || password.touched)"
-           class="alert alert-danger">
-
-        <div *ngIf="password.errors.required">
-          Password is required.
-        </div>
-        <div *ngIf="password.errors.maxlength">
-          Password must not exceed 100 characters. Are you trying an sql injection?
-        </div>
-        <div *ngIf="password.errors.minlength">
-          Password must contain more than 5 symbols. Safety?
-        </div>
-      </div>
-    </div>
-
-
-
-
-    <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid">Submit</button>
-    <a class="pull-right" style="margin-left: 10px;" routerLink="../register">Don't have an account yet? Create a new one</a>
-  </form>
+  </div>
 </div>

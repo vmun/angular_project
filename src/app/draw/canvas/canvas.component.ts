@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TempDataService} from '../../shared/services/temp-data.service';
 import {DataPassService} from '../../shared/services/datapass.service';
+import {Image} from '../../shared/models/models';
 
 @Component({
   selector: 'app-canvas',
@@ -9,7 +10,7 @@ import {DataPassService} from '../../shared/services/datapass.service';
 })
 export class CanvasComponent implements OnInit {
 
-  currentImage = 0;
+  currentImage: Image;
   opacity = 0.5;
   brightness = 1;
 
@@ -51,7 +52,7 @@ export class CanvasComponent implements OnInit {
   }
 
   changeImage(index) {
-    this.imageElement.setAttribute( 'src', this.tempData.imagesFull.find(im => im.id === index).url);
+    this.imageElement.setAttribute( 'src', this.currentImage.file);
     this.polygonsBuffer = this.datapassservice.polygons.filter(pol => pol.image === this.currentImage);
     this.pointsBuffer = [];
   }

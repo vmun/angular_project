@@ -15,6 +15,7 @@ export class DataPassService extends MainService {
     this.currentUser$ = this.user.asObservable();
     this.currentImage$ = this.image.asObservable();
     this.currentCategory$ = this.category.asObservable();
+    this.currentRoute$ = this.route.asObservable();
     this.sendedPolygon$ = this.polygon.asObservable();
     this.currentOpacity$ = this.opacity.asObservable();
     this.currentBrightness$ = this.brightness.asObservable();
@@ -23,10 +24,13 @@ export class DataPassService extends MainService {
   user = new BehaviorSubject('anonymous');
   currentUser$: Observable<string>;
 
-  category = new BehaviorSubject(0);
+  category = new Subject();
   currentCategory$: Observable<any>;
 
-  image = new BehaviorSubject(0);
+  route = new Subject();
+  currentRoute$: Observable<any>;
+
+  image = new Subject();
   currentImage$: Observable<any>;
 
   polygon = new Subject();
