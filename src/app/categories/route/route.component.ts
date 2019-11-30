@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TempDataService} from '../../shared/services/temp-data.service';
 import {DataPassService} from "../../shared/services/datapass.service";
+import {SubFolder} from '../../shared/models/models';
 
 @Component({
   selector: 'app-route',
@@ -9,34 +10,43 @@ import {DataPassService} from "../../shared/services/datapass.service";
 })
 export class RouteComponent implements OnInit {
 
-  current = 0;
+  current: SubFolder;
 
   allRoutes = this.tempData.categories;
-  routes = [];
+  routes = [{id: 0, name: 'Categories'}];
 
   constructor(private tempData: TempDataService, private datapassservice: DataPassService) {
-    this.datapassservice.currentCategory$.subscribe((data) => {
+    this.datapassservice.currentRoute$.subscribe((data) => {
       this.current = data;
-      this.reroute();
+      this.rerouteUp(data);
     });
   }
 
   ngOnInit() {
   }
 
-  changeCategory(id) {
-    this.datapassservice.category.next(id);
+  changeCategory(i) {
+    this.rerouteDown(i);
+    this.datapassservice.category.next(this.routes[i]);
   }
 
-  reroute() {
-    let n = this.current;
-    const routes = [];
-    while (n > 0) {
-      routes.push(this.allRoutes[n]);
-      n = this.allRoutes[n].parent;
+  rerouteUp(route) {
+    this.routes.push(route);
+
+    // let folder = this.current;
+    // const routes = [];
+    // while (folder.parent) {
+    //   routes.push(this.allRoutes[folder.p]);
+    //   n = this.allRoutes[n].parent;
+    // }
+    // routes.push(this.allRoutes[0]);
+    // this.routes = routes.reverse();
+  }
+
+  rerouteDown(index) {
+    while (this.routes[this.routes.length - 1].id !== this.routes[index].id) {
+      this.routes.pop();
     }
-    routes.push(this.allRoutes[0]);
-    this.routes = routes.reverse();
   }
 
 }

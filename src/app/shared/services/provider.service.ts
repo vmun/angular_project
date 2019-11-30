@@ -63,8 +63,8 @@ export class ProviderService extends MainService {
     return this.get(this.host + `api2/folders/${id}/`, {});
   }
 
-  getSubFolders(id: number): Promise<Folder[]> {
-    return this.get(this.host + `api2/folders/${id}/`, {});
+  getSubFolders(id: number): Promise<Folder> {
+    return this.get(this.host + `api/folders/${id}/`, {});
   }
 
   getRootFolders(): Promise<Folder[]> {
