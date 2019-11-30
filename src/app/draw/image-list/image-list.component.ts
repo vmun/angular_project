@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {TempDataService} from '../../shared/services/temp-data.service';
 import {DataPassService} from '../../shared/services/datapass.service';
 import {Image} from '../../shared/models/models';
-import {ProviderService} from "../../shared/services/provider.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ProviderService} from '../../shared/services/provider.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-image-list',

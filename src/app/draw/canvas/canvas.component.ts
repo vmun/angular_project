@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {TempDataService} from '../../shared/services/temp-data.service';
 import {DataPassService} from '../../shared/services/datapass.service';
-import {Image} from '../../shared/models/models';
+import {Image, Polygon} from '../../shared/models/models';
+import {ProviderService} from '../../shared/services/provider.service';
 
 @Component({
   selector: 'app-canvas',
@@ -19,9 +20,11 @@ export class CanvasComponent implements OnInit {
   canvasCtx;
 
   pointsBuffer = [];
-  polygonsBuffer = this.datapassservice.polygons.filter(pol => pol.image === this.currentImage);
+  polygonsBuffer: Polygon[];
 
-  constructor(private tempData: TempDataService, private datapassservice: DataPassService) {
+  constructor(private tempData: TempDataService,
+              private datapassservice: DataPassService,
+              private provider: ProviderService) {
     this.datapassservice.currentImage$.subscribe((data) => {
       if (this.imageElement) {
         this.currentImage = data;
@@ -51,10 +54,19 @@ export class CanvasComponent implements OnInit {
     };
   }
 
-  changeImage(index) {
-    this.imageElement.setAttribute( 'src', this.currentImage.file);
-    this.polygonsBuffer = this.datapassservice.polygons.filter(pol => pol.image === this.currentImage);
-    this.pointsBuffer = [];
+  changeImage(data) {
+    this.imageElement.setAttribute( 'src', data.file);
+    this.provider.getImagePolygons(data.id).then(res => {
+      console.log(res);
+      res.forEach((r) => {
+        r.points = JSON.parse(r.points);
+      });
+      this.polygonsBuffer = res;
+      this.datapassservice.polygons = res;
+      this.pointsBuffer = [];
+      this.drawPolygons();
+    });
+    // this.polygonsBuffer = this.datapassservice.polygons.filter(pol => pol.image === this.currentImage);
   }
 
 
@@ -68,9 +80,16 @@ export class CanvasComponent implements OnInit {
     }
 
     if ((this.pointsBuffer.length >= 3) && this.isNear(point, this.pointsBuffer[0])) {
-      this.polygonsBuffer.push({id: -1, name: 'poly', image: this.currentImage, points: this.pointsBuffer});
-      this.datapassservice.polygons.push({id: -1, name: 'poly', image: this.currentImage, points: this.pointsBuffer});
-      this.datapassservice.polygon.next({id: -1, name: 'poly', image: this.currentImage, points: this.pointsBuffer});
+      const poly = new Polygon();
+      poly.label = 1;
+      poly.image = this.currentImage.id;
+      poly.name = 'poly';
+      poly.points = this.pointsBuffer;
+
+      this.polygonsBuffer.push(poly);
+      this.datapassservice.polygons.push(poly);
+      this.datapassservice.polygon.next(poly);
+      this.provider.postPolygon(poly);
       this.drawPolygons();
       this.pointsBuffer = [];
     } else {

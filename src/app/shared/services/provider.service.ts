@@ -45,11 +45,11 @@ export class ProviderService extends MainService {
   postPolygon(polygon: Polygon): Promise<Polygon> {
     const data = [];
     for (let point of polygon.points) {
-      data.push([point.offsetX, point.offsetY]);
+      data.push({x: point.x, y: point.y});
     }
     return this.post(this.host + 'api2/polygon/', {
       points: JSON.stringify(data),
-      label: polygon.label.id,
+      label: polygon.label,
       text: polygon.text,
       image: polygon.image
     });
