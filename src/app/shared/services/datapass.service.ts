@@ -19,6 +19,7 @@ export class DataPassService extends MainService {
     this.sendedPolygon$ = this.polygon.asObservable();
     this.currentOpacity$ = this.opacity.asObservable();
     this.currentBrightness$ = this.brightness.asObservable();
+    this.allPolygons$ = this.polygons.asObservable();
   }
 
   user = new BehaviorSubject('anonymous');
@@ -42,7 +43,8 @@ export class DataPassService extends MainService {
   brightness = new Subject();
   currentBrightness$: Observable<any>;
 
-  polygons = this.tempData.polygons;
+  polygons = new Subject();
+  allPolygons$: Observable<any>;
 
   host = 'http://localhost:8000/';
 

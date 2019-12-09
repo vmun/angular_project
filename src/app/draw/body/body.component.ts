@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ProviderService} from '../../shared/services/provider.service';
 
 @Component({
   selector: 'app-body',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BodyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private provider: ProviderService) {
+  }
+
+  labels = [];
 
   ngOnInit() {
+    this.provider.getLabels().then(res => {
+      console.log(res);
+      this.labels = res;
+    });
   }
 
 }

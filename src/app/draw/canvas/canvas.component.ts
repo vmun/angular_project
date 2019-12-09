@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {TempDataService} from '../../shared/services/temp-data.service';
 import {DataPassService} from '../../shared/services/datapass.service';
-import {Image, Polygon} from '../../shared/models/models';
+import {Image, Label, Polygon} from '../../shared/models/models';
 import {ProviderService} from '../../shared/services/provider.service';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {PolygonDialogComponent} from '../polygon-dialog/polygon-dialog.component';
 
 @Component({
   selector: 'app-canvas',
@@ -10,6 +12,9 @@ import {ProviderService} from '../../shared/services/provider.service';
   styleUrls: ['./canvas.component.scss']
 })
 export class CanvasComponent implements OnInit {
+
+  @Input() labels: Label[];
+  labelName;
 
   currentImage: Image;
   opacity = 0.5;
@@ -20,11 +25,12 @@ export class CanvasComponent implements OnInit {
   canvasCtx;
 
   pointsBuffer = [];
-  polygonsBuffer: Polygon[];
+  polygonsBuffer: Polygon[] = [];
 
   constructor(private tempData: TempDataService,
               private datapassservice: DataPassService,
-              private provider: ProviderService) {
+              private provider: ProviderService,
+              public dialog: MatDialog) {
     this.datapassservice.currentImage$.subscribe((data) => {
       if (this.imageElement) {
         this.currentImage = data;
@@ -43,7 +49,7 @@ export class CanvasComponent implements OnInit {
     this.imageElement = document.getElementById('image') as HTMLImageElement;
     this.canvasElement = document.getElementById('canvas') as HTMLCanvasElement;
     this.canvasCtx = this.canvasElement.getContext('2d');
-    this.changeImage(0);
+    // this.changeImage(0);
     this.imageElement.onload = () => {
       this.canvasElement.style.top = this.imageElement.clientTop.toString();
       this.canvasElement.style.left = this.imageElement.clientLeft.toString();
@@ -61,7 +67,7 @@ export class CanvasComponent implements OnInit {
         r.points = JSON.parse(r.points);
       });
       this.polygonsBuffer = res;
-      this.datapassservice.polygons = res;
+      this.datapassservice.polygons.next(res);
       this.pointsBuffer = [];
       this.drawPolygons();
     });
@@ -79,21 +85,48 @@ export class CanvasComponent implements OnInit {
     }
 
     if ((this.pointsBuffer.length >= 3) && this.isNear(point, this.pointsBuffer[0])) {
-      const poly = new Polygon();
-      poly.label = 1;
-      poly.image = this.currentImage.id;
-      poly.name = 'poly';
-      poly.points = this.pointsBuffer;
-
-      this.polygonsBuffer.push(poly);
-      this.datapassservice.polygons.push(poly);
-      this.datapassservice.polygon.next(poly);
-      this.provider.postPolygon(poly);
-      this.drawPolygons();
-      this.pointsBuffer = [];
+      this.openDialog();
     } else {
       this.pointsBuffer.push(point);
     }
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(PolygonDialogComponent, {
+      width: '250px',
+      data: {name: this.labelName}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('accepted');
+        this.labelName = result;
+        const poly = new Polygon();
+        const label = this.labels.find(lb => lb.name === result);
+        if (!label) {
+          this.provider.postLabel(result).then(res => {
+            if (res) {
+              console.log(res);
+              this.labels.push(res);
+            }
+          });
+        }
+        poly.image = this.currentImage.id;
+        poly.points = this.pointsBuffer;
+
+        this.polygonsBuffer.push(poly);
+        this.datapassservice.polygons.next(this.polygonsBuffer);
+        // this.datapassservice.polygon.next(poly);
+        this.provider.postPolygon(poly);
+        this.drawPolygons();
+        this.pointsBuffer = [];
+      } else {
+        console.log('canceled');
+        this.pointsBuffer = [];
+        this.drawPolygons();
+      }
+
+    });
   }
 
   drawPoint(point, color) {
@@ -138,3 +171,4 @@ export class CanvasComponent implements OnInit {
       && (point1.y >= point2.y - 5 && point1.y <= point2.y + 5);
   }
 }
+

@@ -1,6 +1,6 @@
-<div class="app" style="padding-top: 0px; padding-bottom: 0px; background: transparent">
+<div class="app" style="padding-top: 0; padding-bottom: 0; background: transparent">
   <div class="row fit">
-    <div class="col-md-2">
+    <div class="col-md-2 no-padding">
       <div class="row fit">
         <div class="col-md-9" style="background: white;">
           <app-image-list></app-image-list>
@@ -12,11 +12,11 @@
     </div>
 
     <div class="col-md-8 no-padding" style="max-width: 100%; max-height: 100%; overflow: auto;">
-      <app-canvas></app-canvas>
+      <app-canvas [labels]="labels"></app-canvas>
     </div>
 
     <div class="col-md-2" style="background: white;">
-      <app-polygon-list></app-polygon-list>
+      <app-polygon-list [labels]="labels"></app-polygon-list>
     </div>
   </div>
 </div>
