@@ -12,8 +12,6 @@ import {ChartsModule} from 'ng2-charts';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TestInterceptor} from './shared/test-interceptor';
 import {DataPassService} from './shared/services/datapass.service';
-import {gachaErrorPipe} from './core/not-found/gacha/error.pipe';
-import {GachaDirective} from './core/not-found/gacha/gacha.directive';
 
 
 @NgModule({
