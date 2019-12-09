@@ -62,15 +62,15 @@ export class ProviderService extends MainService {
   }
 
   getImagePolygons(imageId): Promise<any[]> {
-    return this.get(this.host + 'api2/image/' + imageId + '/polygons/', {});
+    return this.get(this.host + 'api/images/' + imageId + '/my_polygons/', {});
   }
 
   postPolygon(polygon: Polygon): Promise<Polygon> {
     const data = [];
-    for (let point of polygon.points) {
+    for (const point of polygon.points) {
       data.push({x: point.x, y: point.y});
     }
-    return this.post(this.host + 'api2/polygon/', {
+    return this.post(this.host + 'api/polygon/', {
       points: JSON.stringify(data),
       label: polygon.label,
       text: polygon.text,
@@ -79,7 +79,7 @@ export class ProviderService extends MainService {
   }
 
   deletePolygon(id: number): Promise<any> {
-    return this.delete(this.host + `api2/polygon/${id}/`, {});
+    return this.delete(this.host + `api/polygon/${id}/`, {});
   }
 
   getImages(id: number): Promise<Image[]> {
@@ -103,18 +103,18 @@ export class ProviderService extends MainService {
   }
 
   getComment(id: number): Promise<any[]> {
-    return this.get(this.host + `api2/image/${id}/comments/`, {});
+    return this.get(this.host + `api/images/${id}/comments/`, {});
   }
 
   postComment(comment: string, imageId: number): Promise<any> {
-    return this.post(this.host + 'api2/comment/', {
+    return this.post(this.host + 'api/comment/', {
       text: comment,
       image: imageId
     });
   }
 
   putComment(comment: string, id: number) {
-    return this.put(this.host + `api2/comment/${id}/`, {
+    return this.put(this.host + `api/comment/${id}/`, {
       text: comment
     });
   }
@@ -124,11 +124,11 @@ export class ProviderService extends MainService {
   }
 
   getLabels(): Promise<Label[]> {
-    return this.get(this.host + `api2/labels/`, {});
+    return this.get(this.host + `api/labels/`, {});
   }
 
   postLabel(labelName): Promise<Label> {
-    return this.post(this.host + 'api2/labels/', {
+    return this.post(this.host + 'api/labels/', {
       name: labelName
     });
   }

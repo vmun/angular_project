@@ -62,7 +62,7 @@ export class Polygon {
   id: number;
   points: any[] = [];
   label: number;
-  name: string;
+  // name: string;
   text: string;
   image: number;
 }

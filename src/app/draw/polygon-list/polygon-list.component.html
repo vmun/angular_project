@@ -5,8 +5,9 @@
     <mat-action-list>
       <ng-container *ngFor="let polygon of polygons; let i = index">
         <mat-list-item style="word-wrap: break-word;">
-          {{i + 1}}. {{polygon.name}}
+          {{i + 1}}. {{polygon.label}}
         </mat-list-item>
+        <button (click)="deletePolygon(polygon.id)">delete</button>
         <mat-divider></mat-divider>
       </ng-container>
     </mat-action-list>
