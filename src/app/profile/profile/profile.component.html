@@ -1,1 +1,115 @@
-<p>profile works!</p>
+<div class="text-center">
+  <div class="row">
+
+    <div class="col-lg  content">
+      <mat-grid-list cols="4" rowHeight="90vh">
+        <mat-grid-tile colspan="2">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>Username: {{profile.username}}</mat-card-title>
+              <mat-card-subtitle>Email: {{profile.email}}</mat-card-subtitle>
+              <mat-card-subtitle>Address: {{profile.address}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image [src]="profile.avatar"
+                 alt="Photo of a Shiba Inu" style="width: 50vh;">
+            <mat-card-content>
+              <H6>About me:</H6>
+              <p>
+                {{profile.bio}}
+              </p>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <form [formGroup]="ProfileUpdateForm" (ngSubmit)="onSubmit2()">
+
+            <div class="form-group">
+              <label>New address</label>
+              <input type="text" formControlName="address" class="form-control" placeholder="Enter your new address">
+              <div *ngIf="address.invalid && (address.dirty || address.touched)"
+                   class="alert alert-danger">
+                <div *ngIf="address.errors.required">
+                  Address is required.
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>New biography</label>
+              <textarea formControlName="biography" class="form-control" placeholder="Enter your new bio"></textarea>
+              <div *ngIf="bio.invalid && (bio.dirty || bio.touched)"
+                   class="alert alert-danger">
+                <div *ngIf="bio.errors.required">
+                  Biography is required.
+                </div>
+              </div>
+            </div>
+
+            <input class="file-input" formControlName="image" type="file">
+
+            <button class="btn btn-primary" type="submit" [disabled]="!ProfileUpdateForm.valid">Submit</button>
+
+          </form>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <form [formGroup]="PasswordUpdateForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+              <label>
+                Old Password:
+              </label>
+              <input type="password " formControlName="old_password" class="form-control" placeholder="Enter password">
+              <div *ngIf="oldPassword.invalid && (oldPassword.dirty || oldPassword.touched)"
+                   class="alert alert-danger">
+
+                <div *ngIf="oldPassword.errors.required">
+                  Password is required.
+                </div>
+                <div *ngIf="oldPassword.errors.maxlength">
+                  Password must not exceed 100 characters. Are you trying an sql injection?
+                </div>
+                <div *ngIf="oldPassword.errors.minlength">
+                  Password must contain more than 6 symbols. Safety?
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>
+                Password:
+              </label>
+              <input type="password " formControlName="password" class="form-control" placeholder="Enter password">
+              <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                   class="alert alert-danger">
+
+                <div *ngIf="password.errors.required">
+                  Password is required.
+                </div>
+                <div *ngIf="password.errors.maxlength">
+                  Password must not exceed 100 characters. Are you trying an sql injection?
+                </div>
+                <div *ngIf="password.errors.minlength">
+                  Password must contain more than 6 symbols. Safety?
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>
+                Confirm Password:
+              </label>
+              <input type="password" formControlName="conf_password" class="form-control"
+                     placeholder="Confirm password">
+              <div
+                *ngIf="PasswordUpdateForm.errors?.NotSame && (PasswordUpdateForm.touched || PasswordUpdateForm.dirty)"
+                class="cross-validation-error-message alert alert-danger">
+                Passwords should match
+              </div>
+            </div>
+
+            <button class="btn btn-primary" type="submit" [disabled]="!PasswordUpdateForm.valid">Submit</button>
+          </form>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+</div>

@@ -8,8 +8,9 @@ export class User {
 
 export class Profile {
   id: number;
-  origin: string;
+  username: string;
   bio: string;
+  email: string;
   address: string;
   avatar: string;
 }

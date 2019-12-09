@@ -34,13 +34,24 @@ export class ProviderService extends MainService {
     });
   }
 
-  updatepassword(oldpass: string, newpass: string): Promise<AuthResponse> {
-    return this.post(this.host + 'api/users/set_password', {
+  updatePassword(oldpass: string, newpass: string): Promise<any[]> {
+    return this.post(this.host + 'api/users/set_password/', {
       old_password: oldpass,
       new_password: newpass
     });
   }
 
+  updateMyProfile(newBio: string, newAddress: string, newAvatar: any, id: number): Promise<AuthResponse> {
+    return this.put(this.host + `api/profiles/${id}`, {
+      bio: newBio,
+      address: newAddress,
+      avatar: newAvatar
+    });
+  }
+
+  getMyProfile(): Promise<Profile> {
+    return this.get(this.host + `api/profiles/me`, {});
+  }
 
   register(user: string, mail: string, pass: string): Promise<any> {
     return this.post(this.host + 'api/users/', {

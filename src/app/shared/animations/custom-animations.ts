@@ -26,10 +26,10 @@ export const customAnimations =
       query(':leave', animateChild(), {optional: true}),
       group([
         query(':leave', [
-          animate('500ms ease-out', style({left: '100%'}))
+          animate('600ms ease-out', style({left: '100%'}))
         ], {optional: true}),
         query(':enter', [
-          animate('500ms ease-out', style({left: '0%'}))
+          animate('600ms ease-out', style({left: '0%'}))
         ], {optional: true})
       ]),
       query(':enter', animateChild(), {optional: true}),

@@ -4,7 +4,7 @@ import {ProfileComponent} from './profile/profile.component';
 
 
 const authRoutes = [
-  { path: '', redirectTo: 'login'},
+  { path: '**', redirectTo: 'info'},
   { path: 'info', component: ProfileComponent},
 ];
 

@@ -6,8 +6,8 @@ import {BannerComponent} from './Banner.component';
   template: `
       <mat-grid-list cols="3" rowHeight="70vh">
           <mat-grid-tile>
-              <h2>Error 404, {{data.name}} not found</h2></mat-grid-tile>
-          <mat-grid-tile><div><img [src]="data.path" width="400"></div></mat-grid-tile>
+              <h2>Error 404, {{data.Name}} not found</h2></mat-grid-tile>
+          <mat-grid-tile><div><img [src]="data.Path" width="400"></div></mat-grid-tile>
           <mat-grid-tile><app-gacha-banner>loading</app-gacha-banner></mat-grid-tile>
       </mat-grid-list>
   `
