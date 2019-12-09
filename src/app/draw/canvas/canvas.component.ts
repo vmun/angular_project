@@ -120,6 +120,8 @@ export class CanvasComponent implements OnInit {
         this.provider.postPolygon(poly);
         this.drawPolygons();
         this.pointsBuffer = [];
+
+        this.datapassservice.image.next(this.currentImage)
       } else {
         console.log('canceled');
         this.pointsBuffer = [];

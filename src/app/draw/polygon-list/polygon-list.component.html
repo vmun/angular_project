@@ -4,10 +4,12 @@
   <div class="list">
     <mat-action-list>
       <ng-container *ngFor="let polygon of polygons; let i = index">
-        <mat-list-item style="word-wrap: break-word;">
-          {{i + 1}}. {{polygon.label}}
-        </mat-list-item>
-        <button (click)="deletePolygon(polygon.id)">delete</button>
+        <div class="row">
+          <mat-list-item class="col" style="word-wrap: break-word;">
+            {{i + 1}}. {{polygon.label}}
+          </mat-list-item>
+          <button class="col" (click)="deletePolygon(polygon.id)">delete</button>
+        </div>
         <mat-divider></mat-divider>
       </ng-container>
     </mat-action-list>

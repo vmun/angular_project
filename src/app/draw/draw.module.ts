@@ -8,7 +8,7 @@ import {
   MatDialogModule,
   MatFormFieldModule,
   MatIconModule, MatInputModule,
-  MatListModule,
+  MatListModule, MatMenuModule,
   MatSidenavModule,
   MatSliderModule
 } from '@angular/material';
@@ -18,6 +18,7 @@ import {OpacityDirective} from './directives/opacity.directive';
 import {FormsModule} from '@angular/forms';
 import { BrightnessDirective } from './directives/brightness.directive';
 import { PolygonDialogComponent } from './polygon-dialog/polygon-dialog.component';
+import {ImageResolverService} from '../shared/guards/image-resolver.service';
 
 @NgModule({
   declarations: [BodyComponent, CanvasComponent, ImageListComponent, ToolboxComponent, PolygonListComponent, OpacityDirective, BrightnessDirective, PolygonDialogComponent],
@@ -25,6 +26,7 @@ import { PolygonDialogComponent } from './polygon-dialog/polygon-dialog.componen
     CommonModule, DrawRoutingModule, MatSidenavModule, MatListModule, MatIconModule, MatMenuModule, MatSliderModule, FormsModule, MatFormFieldModule, MatDialogModule, MatInputModule
   ],
   entryComponents: [PolygonDialogComponent],
+  providers: [ImageResolverService]
 })
 export class DrawModule {
 }

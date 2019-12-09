@@ -39,7 +39,9 @@ export class PolygonListComponent implements OnInit {
   deletePolygon(id) {
     this.provider.deletePolygon(id).then(res => {
       console.log('deleted');
+      this.datapassservice.image.next(this.currentImage);
     });
+
   }
 
 
