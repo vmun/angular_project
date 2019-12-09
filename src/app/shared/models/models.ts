@@ -23,7 +23,7 @@ export class SubFolder {
   id: number;
   name: string;
   description: string;
-  parent: string;
+  parent: number;
   type: number;
 }
 
@@ -31,9 +31,14 @@ export class Folder {
   id: number;
   name: string;
   description: string;
-  parent: string;
+  parent: number;
   type: number;
-  allowed: SubFolder[];
+  className = 'Folder';
+  // allowed: SubFolder[];
+}
+
+export class ImagePack extends Folder {
+  className = 'ImagePack';
 }
 
 export class Image {

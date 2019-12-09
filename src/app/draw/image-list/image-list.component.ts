@@ -19,7 +19,13 @@ export class ImageListComponent implements OnInit {
               private datapassservice: DataPassService,
               private provider: ProviderService,
               private route: ActivatedRoute) {
+    console.log(+this.route.snapshot.paramMap.get('id'));
     this.provider.getImages(+this.route.snapshot.paramMap.get('id')).then(res => {
+      for (const im of res) {
+        if (im.file[0] === '/') {
+          im.file = provider.host.slice(0, -1) + im.file;
+        }
+      }
       this.images = res;
     });
   }

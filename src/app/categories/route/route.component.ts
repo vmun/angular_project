@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TempDataService} from '../../shared/services/temp-data.service';
-import {DataPassService} from "../../shared/services/datapass.service";
+import {DataPassService} from '../../shared/services/datapass.service';
 import {SubFolder} from '../../shared/models/models';
 
 @Component({

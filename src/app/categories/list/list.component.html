@@ -6,10 +6,10 @@
 <!--  </ng-container>-->
 <!--</div>-->
 <mat-action-list>
-  <mat-list-item *ngFor="let category of categories" (click)="changeCategory(category.id)">
-    <mat-icon *ngIf="category.type != 6" mat-list-icon>folder</mat-icon>
-    <mat-icon *ngIf="category.type == 6" mat-list-icon>image</mat-icon>
-    <h5 mat-line>{{category.name}}</h5>
+  <mat-list-item *ngFor="let child of childs" (click)="changeCategory(child)">
+    <mat-icon *ngIf="child.className === 'Folder'" mat-list-icon>folder</mat-icon>
+    <mat-icon *ngIf="child.className === 'ImagePack'" mat-list-icon>image</mat-icon>
+    <h5 mat-line>{{child.name}}</h5>
   </mat-list-item>
 </mat-action-list>
 

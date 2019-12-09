@@ -1,5 +1,17 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import {AuthResponse, Folder, Image, File, User, Profile, Polygon, Comment, SubFolder, Label} from '../models/models';
+import {
+  AuthResponse,
+  Folder,
+  Image,
+  File,
+  User,
+  Profile,
+  Polygon,
+  Comment,
+  SubFolder,
+  Label,
+  ImagePack
+} from '../models/models';
 import {HttpClient} from '@angular/common/http';
 import {MainService} from './main.service';
 
@@ -16,7 +28,7 @@ export class ProviderService extends MainService {
   }
 
   auth(user: string, pass: string): Promise<AuthResponse> {
-    return this.post(this.host + 'api/token/', {
+    return this.post(this.host + 'api/login/', {
       username: user,
       password: pass
     });
@@ -60,7 +72,7 @@ export class ProviderService extends MainService {
   }
 
   getImages(id: number): Promise<Image[]> {
-    return this.get(this.host + `api2/folders/${id}/`, {});
+    return this.get(this.host + `api/image_packs/${id}/images/`, {});
   }
 
   getSubFolders(id: number): Promise<Folder> {
@@ -69,6 +81,14 @@ export class ProviderService extends MainService {
 
   getRootFolders(): Promise<Folder[]> {
     return this.get(this.host + `api/folders/`, {});
+  }
+
+  getAllowedImagePacks(): Promise<ImagePack[]> {
+    return this.get(this.host + 'api/image_packs/allowed/', {});
+  }
+
+  getAllowedFolders(): Promise<Folder[]> {
+    return this.get(this.host + 'api/image_packs/allowed_folders/', {});
   }
 
   getComment(id: number): Promise<any[]> {

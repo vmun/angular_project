@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DataPassService} from '../../shared/services/datapass.service';
 import {stringify} from 'querystring';
+import {ProviderService} from '../../shared/services/provider.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,9 @@ export class LoginComponent implements OnInit {
   });
 
 
-  constructor(private route: ActivatedRoute, private router: Router, private datapassservice: DataPassService) {
+  constructor(private route: ActivatedRoute, private router: Router,
+              private datapassservice: DataPassService,
+              private provider: ProviderService) {
   }
 
   ngOnInit() {
@@ -42,7 +45,7 @@ export class LoginComponent implements OnInit {
     console.warn(this.loginForm.value);
     console.warn(this.loginForm.get('username').value);
 
-    this.datapassservice.auth(this.loginForm.get('username').value, this.loginForm.get('password').value).then(res => {
+    this.provider.auth(this.loginForm.get('username').value, this.loginForm.get('password').value).then(res => {
       localStorage.setItem('token', res.token);
       localStorage.setItem('user', res.user.username);
       console.warn(res.user.superuser);

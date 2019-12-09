@@ -57,7 +57,6 @@ export class CanvasComponent implements OnInit {
   changeImage(data) {
     this.imageElement.setAttribute( 'src', data.file);
     this.provider.getImagePolygons(data.id).then(res => {
-      console.log(res);
       res.forEach((r) => {
         r.points = JSON.parse(r.points);
       });
