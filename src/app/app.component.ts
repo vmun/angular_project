@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {customAnimations} from './shared/custom-animations';
+import {customAnimations} from './shared/animations/custom-animations';
 
 @Component({
   selector: 'app-root',

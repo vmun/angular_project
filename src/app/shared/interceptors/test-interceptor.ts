@@ -6,7 +6,7 @@ import {
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
-import {DataPassService} from './services/datapass.service';
+import {DataPassService} from '../services/datapass.service';
 
 
 @Injectable()

@@ -10,7 +10,7 @@ import {FormsModule} from '@angular/forms';
 import {CoreModule} from './core/core.module';
 import {ChartsModule} from 'ng2-charts';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TestInterceptor} from './shared/test-interceptor';
+import {TestInterceptor} from './shared/interceptors/test-interceptor';
 import {DataPassService} from './shared/services/datapass.service';
 
 

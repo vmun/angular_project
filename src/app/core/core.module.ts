@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {NotFoundComponent} from './not-found/not-found.component';
-import {gachaErrorPipe,} from './not-found/gacha/error.pipe';
+import {gachaErrorPipe, } from './not-found/gacha/error.pipe';
 import {GachaDirective} from './not-found/gacha/gacha.directive';
 import {GachaBannerComponent} from './not-found/gacha/gachaBanner.component';
 import {FormsModule} from '@angular/forms';
@@ -21,7 +21,7 @@ import {generalPipe} from './not-found/gacha/general.pipe';
     FormsModule,
     MatGridListModule
   ],
-  entryComponents: [BannerTemplateComponent,],
+  entryComponents: [BannerTemplateComponent, ],
   exports: [
     gachaErrorPipe, generalPipe
   ]

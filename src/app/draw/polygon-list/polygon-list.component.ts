@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {TempDataService} from '../../shared/services/temp-data.service';
 import {DataPassService} from '../../shared/services/datapass.service';
-import {Polygon} from "../../shared/models/models";
-import {Image} from "../../shared/models/models";
+import {Polygon} from '../../shared/models/models';
+import {Image} from '../../shared/models/models';
 
 @Component({
   selector: 'app-polygon-list',

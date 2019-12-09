@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {PasswordSameValidator} from '../../shared/FieldsSameValidator.directive';
+import {PasswordSameValidator} from '../../shared/validators/FieldsSameValidator.directive';
 import {Router} from '@angular/router';
 import {DataPassService} from '../../shared/services/datapass.service';
 
