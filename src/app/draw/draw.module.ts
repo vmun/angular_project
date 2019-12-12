@@ -4,7 +4,19 @@ import { BodyComponent } from './body/body.component';
 import {DrawRoutingModule} from './draw-routing.module';
 import { CanvasComponent } from './canvas/canvas.component';
 import { ImageListComponent } from './image-list/image-list.component';
+<<<<<<< Updated upstream
 import {MatIconModule, MatListModule, MatMenuModule, MatSidenavModule, MatSliderModule} from "@angular/material";
+=======
+import {
+  MatDialogModule,
+  MatFormFieldModule,
+  MatIconModule, MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatSidenavModule,
+  MatSliderModule
+} from '@angular/material';
+>>>>>>> Stashed changes
 import { ToolboxComponent } from './toolbox/toolbox.component';
 import { PolygonListComponent } from './polygon-list/polygon-list.component';
 import {OpacityDirective} from './directives/opacity.directive';

@@ -10,8 +10,14 @@ import {FormsModule} from '@angular/forms';
 import {CoreModule} from './core/core.module';
 import {ChartsModule} from 'ng2-charts';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+<<<<<<< Updated upstream
 import {TestInterceptor} from './shared/test-interceptor';
 import {DataPassService} from "./shared/datapass.service";
+=======
+import {TestInterceptor} from './shared/interceptors/test-interceptor';
+import {DataPassService} from './shared/services/datapass.service';
+import {MatProgressBarModule} from '@angular/material';
+>>>>>>> Stashed changes
 
 
 @NgModule({
@@ -26,7 +32,12 @@ import {DataPassService} from "./shared/datapass.service";
     HttpClientModule,
     AppRoutingModule,
     CoreModule,
+<<<<<<< Updated upstream
     ChartsModule
+=======
+    ChartsModule,
+    MatProgressBarModule,
+>>>>>>> Stashed changes
   ],
   providers: [
     DataPassService, {

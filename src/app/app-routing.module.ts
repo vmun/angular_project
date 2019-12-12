@@ -5,6 +5,7 @@ import {MainpageComponent} from './core/mainpage/mainpage.component';
 import {AuthcheckGuard} from './shared/guards/authcheck.guard';
 // import {CategoriesModule} from './categories/categories.module';
 import {NotFoundComponent} from './core/not-found/not-found.component';
+import {DataresolverService} from './shared/resolvers/dataresolver.service';
 
 const routes: Routes = [
 
@@ -14,6 +15,17 @@ const routes: Routes = [
     data: {animation: 'Auth'}
   },
   {
+<<<<<<< Updated upstream
+=======
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then(mod => mod.ProfileModule),
+    resolve: {
+      profile: DataresolverService
+    },
+    data: {animation: 'Auth'}
+  },
+  {
+>>>>>>> Stashed changes
     path: '',
     pathMatch: 'full', component: MainpageComponent,
     data: {animation: 'Main'}
