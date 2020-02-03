@@ -5,7 +5,7 @@
 <!--    </div>-->
 <!--  </ng-container>-->
 <!--</div>-->
-<mat-action-list>
+<mat-action-list style="width:100%">
   <mat-list-item *ngFor="let child of childs" (click)="changeCategory(child)">
     <mat-icon *ngIf="child.className === 'Folder'" mat-list-icon>folder</mat-icon>
     <mat-icon *ngIf="child.className === 'ImagePack'" mat-list-icon>image</mat-icon>

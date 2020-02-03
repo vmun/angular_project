@@ -12,29 +12,29 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(mod => mod.AuthModule),
-    data: {animation: 'Auth'}
+    // data: {animation: 'Auth'}
   },
   {
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then(mod => mod.ProfileModule),
-    data: {animation: 'Auth'}
+    // data: {animation: 'Auth'}
   },
   {
     path: '',
     pathMatch: 'full', component: MainpageComponent,
-    data: {animation: 'Main'}
+    // data: {animation: 'Main'}
   },
   {
     path: 'home',
     pathMatch: 'full', component: MainpageComponent,
-    data: {animation: 'Main'}
+    // data: {animation: 'Main'}
   },
   {
     canActivate: [AuthcheckGuard],
     path: 'categories',
     loadChildren: () => import('./categories/categories.module').then(mod => mod.CategoriesModule),
     // component: BodyComponent,
-    data: {animation: 'Categories'}
+    // data: {animation: 'Categories'}
   },
   {
     canActivate: [AuthcheckGuard],

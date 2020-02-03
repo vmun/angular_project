@@ -6,7 +6,7 @@ import { CanvasComponent } from './canvas/canvas.component';
 import { ImageListComponent } from './image-list/image-list.component';
 import {
   MatDialogModule,
-  MatFormFieldModule,
+  MatFormFieldModule, MatGridListModule,
   MatIconModule, MatInputModule,
   MatListModule, MatMenuModule,
   MatSidenavModule,
@@ -23,7 +23,7 @@ import {ImageResolverService} from '../shared/guards/image-resolver.service';
 @NgModule({
   declarations: [BodyComponent, CanvasComponent, ImageListComponent, ToolboxComponent, PolygonListComponent, OpacityDirective, BrightnessDirective, PolygonDialogComponent],
   imports: [
-    CommonModule, DrawRoutingModule, MatSidenavModule, MatListModule, MatIconModule, MatMenuModule, MatSliderModule, FormsModule, MatFormFieldModule, MatDialogModule, MatInputModule
+    CommonModule, DrawRoutingModule, MatSidenavModule, MatListModule, MatIconModule, MatMenuModule, MatSliderModule, FormsModule, MatFormFieldModule, MatDialogModule, MatInputModule, MatGridListModule
   ],
   entryComponents: [PolygonDialogComponent],
   providers: [ImageResolverService]
